@@ -31,7 +31,7 @@ Installs Apache
 
 Sets up a custom HTML page
 
-Launches a Managed Instance Group (mig.tf) with auto-healing & health checks
+Launches a Managed Instance Group (mig.tf) with auto-healing & health checks.
 
 Sets up a Global HTTP Load Balancer (lb.tf)
 
