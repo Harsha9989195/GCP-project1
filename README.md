@@ -1,5 +1,4 @@
-🚀 GCP Apache Web Server with Load Balancer using Terraform
-
+**🚀 GCP Apache Web Server with Load Balancer using Terraform**
 This project sets up a scalable and highly available Apache web server infrastructure on Google Cloud Platform using Terraform. It includes:
 
 Instance Template with a Startup Script
@@ -12,7 +11,7 @@ Firewall rules
 
 Modular and clean Terraform code
 
-📁 File Structure
+**📁 File Structure**
 .
 ├── firewall.tf         # Firewall rule to allow HTTP traffic
 ├── lb.tf               # Load balancer setup (backend service, URL map, proxy, forwarding rule)
@@ -24,7 +23,7 @@ Modular and clean Terraform code
 ├── .gitignore          # Ignore .terraform/ and terraform.tfstate*
 └── README.md           # Documentation
 
-🧰 What It Does
+**🧰 What It Does**
 
 Creates an Instance Template (template.tf) that:
 
