@@ -1,40 +1,102 @@
-**🚀 GCP Apache Web Server with Load Balancer using Terraform**
-This project sets up a scalable and highly available Apache web server infrastructure on Google Cloud Platform using Terraform. It includes:
+# ☁️ GCP Terraform Project – Managed Instance Group (MIG) with Apache & Load Balancer
 
-Instance Template with a Startup Script
+This project provisions a complete infrastructure setup on **Google Cloud Platform (GCP)** using **Terraform**. It deploys a **Managed Instance Group (MIG)** of virtual machines running **Apache Web Server**, with traffic routed through a **Global HTTP Load Balancer**.
 
-Managed Instance Group (MIG)
+🔥 Access your app using just the **Load Balancer IP** — fully automated, production-grade, and cost-efficient!
 
-Global HTTP Load Balancer
+---
 
-Firewall rules
+## 🎯 Objective
 
-Modular and clean Terraform code
+- ✅ Launch multiple VM instances using **Managed Instance Group**
+- ✅ Auto-install **Apache HTTP Server** using startup scripts
+- ✅ Configure **Global Load Balancer** for traffic distribution
+- ✅ Allow **HTTP ingress (port 80)** via firewall
+- ✅ Access the webpage using **external Load Balancer IP**
 
-**📁 File Structure**
-.
-├── firewall.tf         # Firewall rule to allow HTTP traffic
-├── lb.tf               # Load balancer setup (backend service, URL map, proxy, forwarding rule)
-├── mig.tf              # Managed Instance Group using the instance template
-├── template.tf         # Instance Template with embedded startup script
-├── outputs.tf          # Output variables (like LB IP)
-├── providers.tf        # GCP provider definition
-├── variables.tf        # Input variables like project_id, region, zone
-├── .gitignore          # Ignore .terraform/ and terraform.tfstate*
-└── README.md           # Documentation
+---
 
-**🧰 What It Does**
+## 🧱 Tech Stack
 
-Creates an Instance Template (template.tf) that:
+- **Terraform** for Infrastructure as Code (IaC)
+- **Google Cloud Platform (GCP)**
+  - Compute Engine
+  - Instance Template
+  - Managed Instance Group
+  - HTTP(S) Load Balancer
+  - Firewall Rules
+- **Apache Web Server** (via startup script)
 
-Installs Apache
+---
 
-Sets up a custom HTML page
+## 📁 Folder Structure
 
-Launches a Managed Instance Group (mig.tf) with auto-healing & health checks.
 
-Sets up a Global HTTP Load Balancer (lb.tf)
 
-Opens port 80 using a Firewall Rule (firewall.tf)
+GCP-project1/
 
-Outputs the Load Balancer IP
+├── provider.tf # GCP provider and auth config
+
+├── variable.tf # Input variables
+
+├── output.tf # Output Load Balancer IP
+
+├── firewall.tf # Allow HTTP traffic
+
+├── mig.tf # Managed Instance Group setup
+
+├── template.tf # Instance Template with startup script
+
+├── lb.tf # Load Balancer configuration
+
+├── .gitignore # Ignore .Terraform 
+
+
+
+---
+
+## 🚀 Deployment in Cloud Shell (Free Tier Safe)
+
+### ✅ Prerequisites
+- GCP Project with billing enabled
+- [Cloud Shell](https://shell.cloud.google.com/) or Terraform installed locally
+- Enabled `compute.googleapis.com` API
+
+### 🛠️ Set Project & Region (in Cloud Shell)
+
+```bash
+# Replace with your actual project ID
+PROJECT_ID=your-project-id
+REGION=us-central1
+ZONE=us-central1-a
+
+gcloud config set project $PROJECT_ID
+gcloud config set compute/region $REGION
+gcloud config set compute/zone $ZONE
+gcloud services enable compute.googleapis.com 
+
+
+📦 Clone & Deploy
+
+git clone https://github.com/Harsha9989195/GCP-project1.git
+cd GCP-project1
+
+terraform init
+terraform plan
+terraform apply
+
+🌐 Access Your Apache Website
+
+Once deployed, Terraform will print your Load Balancer IP:
+
+load_balancer_ip = http://<EXTERNAL_IP>
+
+
+Visit it in your browser. You’ll see the Apache welcome page served by instances in the Managed Instance Group.
+
+
+🧼 Clean Up
+
+To avoid ongoing GCP costs:
+
+terraform destroy
